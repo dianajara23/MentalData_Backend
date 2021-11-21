@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const db = require('./queries')
+const cors = require('cors')
 const port = 3000
 
 // Crear el servidor
@@ -16,7 +17,7 @@ app.use(
 )
 
 // habilitar cors
-// app.use(cors());
+app.use(cors());
 
 
 app.get('/', (request, response) => {
@@ -24,7 +25,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/users', db.getUsers )
-app.get('/users/:id', db.getUserById)
+// app.get('/users/:id', db.getUserById)
 
 app.listen(port, () => {
   console.log(`App running on port ${port}`)
